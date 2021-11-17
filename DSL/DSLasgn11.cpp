@@ -25,16 +25,23 @@ int Queue::isempty()
 }
 
 int Queue::isfull()
-{    return(q.rear==MAX-1)?1:0;}
+{   
+    return(q.rear==MAX-1)?1:0;
+}
 
 void Queue::enqueue(int x)
-{q.data[++q.rear]=x;}
+{
+    q.data[++q.rear]=x;
+}
 
 int Queue::delqueue()
-{return q.data[++q.front];}
+{
+    return q.data[++q.front];
+}
 
 void Queue::display()
-{   int i;
+{   
+    int i;
     cout<<"\n";
     for(i=q.front+1;i<=q.rear;i++)
 	     cout<<q.data[i]<<" ";

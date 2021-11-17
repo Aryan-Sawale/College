@@ -1,0 +1,30 @@
+>Difference between passing using & and w/o it
+Func1(int &a) 
+//called by Func1(a)
+Func2(int *a)
+//called by Func2(&a)
+
+
+>Reason for passing by const reference
+void VersionOne(Vector v);
+void VersionTwo(Vector& v);
+void VersionThree(const Vector& v);
+
+versionone is passed by value and thus will be copied everytime(perhaps using copy constructor). Therefore it may be ineffecient.
+versiontwo is passed by reference and will not be copied everytime, however the original object can be modified by the function.
+versionthree is passed by const reference and is therefore efficient as well as unmodifiable.
+
+>erase-remove idiom
+A common programming task is to remove all elements that have a certain value or fulfill a certain criterion from a collection. In C++, this can be achieved using a hand-written loop. It is, however, preferable to use an algorithm from the C++ Standard Library for such tasks.
+erase can be used to delete an element from a collection, but for containers which are based on an array, such as vector, all elements after the deleted element have to be moved forward to avoid "gaps" in the collection. Calling erase multiple times on the same container generates much overhead from moving the elements.
+The algorithm library provides the remove and remove_if algorithms for this. Because these algorithms operate on a range of elements denoted by two forward iterators, they have no knowledge of the underlying container or collection.
+These algorithms do not remove elements from the container, but move all elements that do not fit the removal criteria to the front of the range, keeping the relative order of the elements. This is done in a single pass through the data range.
+As no elements are actually removed and the container retains the same size, the tail of the array has a length equal to the number of "removed" items; these items remain in memory but in an unspecified state. remove returns an iterator pointing to the first of these tail elements so that they can be deleted using a single call to erase.
+Doing the same using only erase results in as many passes as there are elements to remove. For each of these passes, all elements after the erased element have to be moved, which is more time-consuming than shifting elements in a single pass.
+e.g
+#include <algorithm>
+...
+vec.erase(std::remove(vec.begin(), vec.end(), 8), vec.end());
+
+\n is more efficient than endl, so avoid using endl
+refer this https://www.geeksforgeeks.org/avoid-using-stdendl/

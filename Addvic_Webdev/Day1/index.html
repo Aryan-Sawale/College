@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Document</title>
+
+    <!-- style tag is ised to write css -->
+    <style>
+        h1
+        {
+            text-align: center;
+            font-size: 50px !important; /*since we have modified h1 using selector as well as class*/
+        }                               /*there was a clash with font_size, so we used !important to resolve it*/
+
+        body
+        {
+            color: green;
+            background-color: skyblue;
+            font-family: 'Road Rage', cursive;
+        }
+        /* h1, body, p are element selectors */
+
+        p
+        {
+            background-color: white;
+            border: 2px solid black;  /*px = pixel, it is a css measurement unit*/
+            margin: 20px;    /*CSS box model */
+            padding: 10px;
+            /* width: 50vw;
+            height: 50vh; */
+        }
+        /*
+        CSS units
+        1. px = pixels on screen
+        2. 1 em = 16 px 
+        3. rem = relative to browser
+        4. % = % of width/height of device
+        5. vh = viewport height  //similiar to percent
+        6. vw = viewport width
+        generally pixels are not used because they may change depending on device/browser
+        */
+
+        /* This is a class which modifies tags with this name in the class atrribute*/
+        .class_name
+        {
+            color: rgb(0, 21, 255);
+            font-size: large;
+            font-weight: bold;
+        }
+
+        /* this is an id, we generally use it for a unique element*/
+        #heading1
+        {
+            background-color: brown;
+            color: white;
+        }
+
+        .footer
+        {
+            background-color: black;
+            color: white;
+            padding: 20px;
+        }
+
+        a
+        {
+            color: red;
+        }
+        /* modifying anchor tag */
+
+        a:hover
+        {
+            color: yellow;
+        }
+        /*modifying anchor tag's hover attribute (pseudo classes)*/
+        /*hover can be used for other tags as well*/
+
+    </style>
+
+</head>
+<body>
+    <h1 class="class_name" id="heading1">My articles</h1>
+
+    <hr>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+         Aut commodi itaque fugiat sapiente quia! Ipsa sit illo delectus veritatis reiciendis esse rem aliquid 
+         possimus nostrum recusandae dolore debitis l
+         ibero, enim quae incidunt adipisci. Sed nihil incidunt libero, odi
+         o aliquid ratione ab, maxime veniam eum, ullam porro! Voluptate saepe culpa velit.
+    </p>
+
+    <p class="class_name">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Aut commodi itaque fugiat sapiente quia! Ipsa sit illo delectus veritatis reiciendis esse rem aliquid 
+        possimus nostrum recusandae dolore debitis l
+        ibero, enim quae incidunt adipisci. Sed nihil incidunt libero, odi
+        o aliquid ratione ab, maxime veniam eum, ullam porro! Voluptate saepe culpa velit.
+   </p>
+
+   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    Aut commodi itaque fugiat sapiente quia! Ipsa sit illo delectus veritatis reiciendis esse rem aliquid 
+    possimus nostrum recusandae dolore debitis l
+    ibero, enim quae incidunt adipisci. Sed nihil incidunt libero, odi
+    o aliquid ratione ab, maxime veniam eum, ullam porro! Voluptate saepe culpa velit.
+    </p>
+
+    <div class="footer">
+        Copyright 2021 - Aryan in association with <a href="https://google.com">GOOGLE</a>
+    </div>
+</body>
+</html>
+
+<!--
+    lorem50 is a feature of vscode which generates random 50 words
+    CTRL + / for automatic commenting in vscode in any language
+    CSS box model - go to inspect element on any page and check out the box under styles
+    class selector(.class), element selector(tag) and id selector(#id) are demonstrated here
+
+    imported from google fonts
+    go to google fonts -> click select style -> paste the links in <head> tag
+    -> modify required tags font using font-family statement given there
+    We can also import to CSS directly
+-->

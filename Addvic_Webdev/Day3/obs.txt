@@ -1,0 +1,2 @@
+npx create-react-app my-react-app
+(look up npx vs npm)
