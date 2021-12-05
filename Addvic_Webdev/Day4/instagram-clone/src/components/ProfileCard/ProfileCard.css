@@ -1,0 +1,32 @@
+.profileCard {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profileCard > img {
+  border-radius: 50%;
+  object-fit: cover;
+  /* for perfectly round img */
+}
+
+.profileCard__Names {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4rem;
+}
+
+#profileCard__Username {
+  font-weight: 500;
+}
+
+#profileCard__Name {
+  color: #8e8e8e;
+}
+
+.profileCard > a {
+  color: #0095f6;
+  font-weight: 600;
+  text-decoration: none;
+}

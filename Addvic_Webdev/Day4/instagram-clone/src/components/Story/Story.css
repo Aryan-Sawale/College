@@ -1,0 +1,18 @@
+.storyImg {
+  border: 2px solid red;
+  border-radius: 50%;
+  padding: 2px;
+}
+
+.storyCard {
+  cursor: pointer;
+  margin: 0 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.storyCard > center {
+  font-size: smaller;
+  color: #737373;
+}

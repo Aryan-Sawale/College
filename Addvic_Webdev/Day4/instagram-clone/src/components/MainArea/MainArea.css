@@ -1,0 +1,27 @@
+.mainArea {
+  flex: 1;
+  overflow-y: scroll;
+  margin-right: 1rem;
+}
+
+.mainArea::-webkit-scrollbar {
+  display: none;
+}
+
+.storyArea {
+  background-color: white;
+  /* height: 7rem; */
+  border: 1px solid lightgray;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 12px;
+}
+
+@media screen and (max-width: 1030px) {
+  .mainArea {
+    width: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+}

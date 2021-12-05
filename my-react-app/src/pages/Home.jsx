@@ -1,13 +1,16 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import "./Home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-    return(
-        <div>
-            <h1>Hello, you're on home page</h1>
-            <Link to="/User">Go to Users</Link>
-        </div>
-    )
-}
+  return (
+    <div className="homePage">
+      <h1>Hello, you're on home page</h1>
+      <Link to="/User" id="linkButton">
+        Go to Users
+      </Link>
+    </div>
+  );
+};
 
-export default Home
+export default Home;

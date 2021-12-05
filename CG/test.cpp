@@ -1,17 +1,23 @@
-#include <iostream>
-#include <graphics.h>
+#include<stdio.h>
 
-using namespace std;
+#include<conio.h>
+
+#include<graphics.h>
 
 int main()
+
 {
-	int gd = DETECT, gm;
-	initgraph(&gd, &gm, NULL);
-	setcolor(GREEN);
-	circle(200, 200, 50);
-	setfillstyle(HATCH_FILL, RED);
-	floodfill(200, 200, GREEN);
-	getch();
-	closegraph();
-	return 0;
+
+int gd=DETECT, gm;
+
+initgraph(&gd,&gm,NULL);
+
+setbkcolor(GREEN);
+
+circle(320,240,100);
+
+getch();
+
+closegraph();
+
 }

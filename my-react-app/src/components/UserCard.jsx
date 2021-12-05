@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react";  //rfc for boilerplate
 import "./UserCard.css";
 
 const UserCard = ( {Name, URL} ) => {

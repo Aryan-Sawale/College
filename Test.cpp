@@ -1,34 +1,29 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+struct Node
+{
+  int data;
+  Node *next;
+};
+void insert_at_end(Node* &head)
+{
+  Node *newnode = new Node();
+  newnode->data = 2;
+  newnode->next = NULL;
+  head->next = newnode;
+}
 int main()
 {
-  list<int> kek;
-  for (int i = 0; i < 10; i++)
+  //code
+  Node *head = new Node();
+  head->data = 1;
+  head->next = NULL;
+  insert_at_end(head);
+  Node *temp = head;
+  while (temp!=NULL)
   {
-    kek.push_back(i*2);
+    cout << temp->data << " ";
+    temp = temp->next;
   }
-
-  for (auto it = kek.begin(); it != kek.end(); it++)
-  {
-    cout<<*it<<" ";
-  }
-  cout<<"\n";
-
-  kek.pop_back();
-
-  for (auto it = kek.begin(); it != kek.end(); it++)
-  {
-    cout<<*it<<" ";
-  }
-  cout<<"\n";
-
-  kek.pop_front();
-
-  for (auto it = kek.begin(); it != kek.end(); it++)
-  {
-    cout<<*it<<" ";
-  }
-  
 }

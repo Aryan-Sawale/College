@@ -3,30 +3,31 @@
 using namespace std;
 
 class Dequeue
-{  
+{
     int data[MAX];
     int front, rear;
-    public:
-        Dequeue()
-        {
-            front = rear = -1;
-        }
-        int isempty();
-        int isfull();
-        void ins_front(int key);
-        void ins_back(int key);
-        void del_front();
-        void del_back();
-        void display();
+
+public:
+    Dequeue()
+    {
+        front = rear = -1;
+    }
+    int isempty();
+    int isfull();
+    void ins_front(int key);
+    void ins_back(int key);
+    void del_front();
+    void del_back();
+    void display();
 };
 
 int Dequeue::isempty()
 {
-	return (front == rear == -1) ? 1 : 0;
+    return ((front == -1) && (rear == -1)) ? 1 : 0;
 }
 
 int Dequeue::isfull()
-{   
+{
     return (rear == MAX - 1) ? 1 : 0;
 }
 
@@ -34,13 +35,15 @@ void Dequeue::ins_front(int key)
 {
     if (isfull())
     {
-        cout<<"\nError: overflow";
+        cout << "\nError: overflow";
+        return;
     }
 
     if (isempty())
     {
         rear = front = 0;
         data[front] = key;
+        return;
     }
 
     front--;
@@ -51,13 +54,15 @@ void Dequeue::ins_back(int key)
 {
     if (isfull())
     {
-        cout<<"\nError: overflow";
+        cout << "\nError: overflow";
+        return;
     }
 
     if (isempty())
     {
         rear = front = 0;
         data[rear] = key;
+        return;
     }
 
     rear++;
@@ -68,12 +73,14 @@ void Dequeue::del_front()
 {
     if (isempty())
     {
-        cout<<"\nError: Underflow";
+        cout << "\nError: Underflow";
+        return;
     }
-    
+
     if (rear == front)
     {
-        front = rear = 1;
+        front = rear = -1;
+        return;
     }
 
     front++;
@@ -83,12 +90,14 @@ void Dequeue::del_back()
 {
     if (isempty())
     {
-        cout<<"\nError: Underflow";
+        cout << "\nError: Underflow";
+        return;
     }
-    
+
     if (rear == front)
     {
-        front = rear = 1;
+        front = rear = -1;
+        return;
     }
 
     rear--;
@@ -96,59 +105,63 @@ void Dequeue::del_back()
 
 void Dequeue::display()
 {
-    cout<<"\n";
+    cout << "\n";
     if (isempty())
     {
-        cout<<"Queue is empty";
+        cout << "Queue is empty";
+        return;
     }
-    
+
     for (int i = front; i <= rear; i++)
     {
-        cout<<data[i]<<" ";
+        cout << data[i] << " ";
     }
-    cout<<"\n";
+    cout << "\n";
 }
 
 int main()
-{   
+{
     Dequeue obj;
     int ch, ele;
     do
-    {   
-        cout<<"\n1.Insert at front\n2.Insert at end\n3.Delete from front\n4.Delete from end\n5.Display\n6.Exit\nEnter your choice:";
-        cin>>ch;
-        switch(ch)
-        {  
-            case 1: 
-                cout<<"\nEnter element: ";
-                cin>>ele;
-                obj.ins_front(ele);
-                break;
+    {
+        cout << "\n1.Insert at front\n2.Insert at end\n3.Delete from front\n4.Delete from end\n5.Display\n6.Exit\nEnter your choice: ";
+        cin >> ch;
+        switch (ch)
+        {
+        case 1:
+            cout << "\nEnter element: ";
+            cin >> ele;
+            obj.ins_front(ele);
+            break;
 
-            case 2: 
-                cout<<"\nEnter element: ";
-                cin>>ele;
-                obj.ins_back(ele);
-                break;
+        case 2:
+            cout << "\nEnter element: ";
+            cin >> ele;
+            obj.ins_back(ele);
+            break;
 
-            case 3: 
-                obj.del_front();
-                break;
+        case 3:
+            obj.del_front();
+            break;
 
-            case 4: 
-                obj.del_back();
-                break;
+        case 4:
+            obj.del_back();
+            break;
 
-            case 5:
-                obj.display();
-                break;
+        case 5:
+            obj.display();
+            break;
 
-            case 6:
-                cout<<"\nExiting...";
-                break;
-            }
-    }
-    while (ch!=6);
-    
+        case 6:
+            cout << "\nExiting...";
+            break;
+
+        default:
+            cout << "\nInvalid input";
+            break;
+        }
+    } while (ch != 6);
+
     return 0;
 }

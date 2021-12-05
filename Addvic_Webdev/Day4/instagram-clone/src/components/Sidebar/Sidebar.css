@@ -1,0 +1,39 @@
+.sidebar {
+  /* background-color: red; */
+  width: 20rem;
+}
+
+.suggestionArea {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.suggestionArea > span {
+  color: #8e8e8e;
+  font-weight: 600;
+}
+
+.suggestionArea > a {
+  text-decoration: none;
+  font-weight: 500;
+  color: black;
+}
+
+.sidebarLinks {
+  margin: 1rem;
+}
+.sidebarLinks > span {
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 400;
+  color: #cdcdcd;
+}
+
+/* responsive design */
+@media screen and (max-width: 1030px) {
+  .sidebar {
+    /* background-color: red; */
+    display: none;
+  }
+}

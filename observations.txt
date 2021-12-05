@@ -28,3 +28,6 @@ vec.erase(std::remove(vec.begin(), vec.end(), 8), vec.end());
 
 \n is more efficient than endl, so avoid using endl
 refer this https://www.geeksforgeeks.org/avoid-using-stdendl/
+
+*& (reference to pointer) vs ** (pointer to pointer)
+https://stackoverflow.com/questions/3834067/c-difference-between-and-in-parameter-passing#:~:text=The%20first%20(%20**%20)%20is%20a,pointer%20which%20points%20to%20NULL).

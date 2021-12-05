@@ -1,0 +1,91 @@
+.postCard {
+  background-color: white;
+  border: 1px solid lightgray;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.postCard__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.7rem;
+}
+
+.postCard__header > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postCard__header > div > span {
+  font-weight: 500;
+  /* color: #979797; */
+  cursor: pointer;
+}
+
+.postCard__header > div > span:hover {
+  text-decoration: underline;
+}
+
+.postIcon {
+  font-size: 25px;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.postActions {
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.lighterText {
+  font-weight: 400;
+  color: grey;
+}
+
+.postCard__content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.postCard__content b {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.postCard__content b:hover {
+  text-decoration: underline;
+}
+
+.postCard__commentArea {
+  padding: 1rem 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.postCard__commentArea > input {
+  flex: 1;
+  padding: 0.5rem;
+  outline: none;
+  border: none;
+}
+
+.postCard__commentArea > a {
+  color: #3195f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* .profilepic_name {
+  width: 7.5rem;
+} */
+
+#pp {
+  border-radius: 50%;
+  margin-right: 0.4rem;
+}

@@ -5,11 +5,12 @@ class DB;
 class DM
 {
     float dist_meter;
-    public:
+
+public:
     void get()
     {
-        cout<<"Enter distance in meters and centimeters: "<<endl;
-        cin>>dist_meter;
+        cout << "Enter distance in meters and centimeters: " << endl;
+        cin >> dist_meter;
     }
     friend void addition(DM, DB);
 };
@@ -17,11 +18,12 @@ class DM
 class DB
 {
     float dist_feet;
-    public:
+
+public:
     void get()
     {
-        cout<<"Enter distance in feet and inches: "<<endl;
-        cin>>dist_feet;
+        cout << "Enter distance in feet and inches: " << endl;
+        cin >> dist_feet;
     }
     friend void addition(DM, DB);
 };
@@ -32,15 +34,15 @@ void addition(DM M, DB F)
     float result_meter = M.dist_meter + converted_value;
     float result_feet = 3.28 * result_meter;
     int choice;
-    cout<<"Enter 1 for result in meters and 2 for inches: ";
-    cin>>choice;
-    if(choice == 1)
+    cout << "Enter 1 for result in meters and 2 for inches: ";
+    cin >> choice;
+    if (choice == 1)
     {
-        cout<<"result in meters and centimeters: "<<result_meter;
+        cout << "result in meters and centimeters: " << result_meter;
     }
     else
     {
-        cout<<"result in feet and inches: "<<result_feet;
+        cout << "result in feet and inches: " << result_feet;
     }
 }
 
