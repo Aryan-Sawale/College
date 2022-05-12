@@ -1,30 +1,64 @@
 #include <bits/stdc++.h>
-
 using namespace std;
+
+template <typename T>
+class vectorClass
+{
+public:
+    T *arr;
+    int capacity;
+    int current;
+
+    vectorClass()
+    {
+        arr = new T[1];
+        capacity = 1;
+        current = 0;
+    }
+
+    void push(T data)
+    {
+        if (current == capacity)
+        {
+            T *temp = new T[2 * capacity];
+
+            for (int i = 0; i < capacity; i++)
+            {
+                temp[i] = arr[i];
+            }
+
+            delete[] arr;
+            capacity *= 2;
+            arr = temp;
+        }
+
+        arr[current] = data;
+        current++;
+    }
+
+    void pop() { current--; }
+
+    void print()
+    {
+        for (int i = 0; i < current; i++)
+        {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
 
 int main()
 {
-    fstream fobj;
-    fobj.open("File3.txt", ios::out);
-    char arr[100];
-    cout<<"Enter your data";
-    cin.getline(arr, 100);
+    vectorClass<int> v;
+    v.push(10);
+    v.push(20);
+    v.push(30);
+    v.push(40);
+    v.pop();
 
-    int length = strlen(arr);
-
-    fobj.write(arr, length);
-    fobj.close();
-
-    char line[100];
-    fobj.open("File3.txt", ios::in);
-
-    while(fobj)
-    {
-        fobj.getline(line, length + 1);
-        cout<<line;
-    }
-
-    fobj.close();
+    cout << "Vector elements : ";
+    v.print();
 
     return 0;
 }

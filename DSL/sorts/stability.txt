@@ -1,0 +1,7 @@
+Several common sorting algorithms are stable by nature, 
+such as Merge Sort, Timsort, Counting Sort, Insertion Sort,
+and Bubble Sort. Others such as Quicksort, Heapsort and Selection Sort
+are unstable.
+
+We can modify unstable sorting algorithms to be stable.
+For instance, we can use extra space to maintain stability in Quicksort.
