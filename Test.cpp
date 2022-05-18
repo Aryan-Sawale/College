@@ -1,98 +1,196 @@
-#include <iostream>
-
+#include <bits/stdc++.h>
 using namespace std;
 
 #define MAX 10
-#define INF 9999;
+bool visited[MAX] = {};
 
-class Graph
+struct Node
 {
-public:
-	int adj_mat[MAX][MAX] = {}; // intialize all values to 0
-	int vertices = MAX, edges;
-	void create_graph();
-	void display();
+	int index;
+	int cost;
+	Node *next;
+
+	Node(int index, int cost)
+	{
+		this->index = index;
+		this->cost = cost;
+		next = NULL;
+	}
 };
 
-void Graph::create_graph()
+void insert(Node *&head, Node *x)
 {
-	cout << "Enter vertices and edges: ";
-	cin >> vertices >> edges;
-	int u, v, weight;
-	for (int i = 0; i < edges; i++)
+	Node *temp = head;
+	while (temp->next != NULL)
 	{
-		cout << "\nEnter the source vertex, destination vertex and weight: ";
-		cin >> u >> v >> weight;
-		adj_mat[u][v] = adj_mat[v][u] = weight;
+		temp = temp->next;
 	}
+	temp->next = x;
 }
 
-void Graph::display()
+struct Graph
 {
-	cout << "Graph:\n";
-	for (int i = 0; i < vertices; i++)
+	Node *data[MAX];
+	int vertices, edges;
+	string cities[MAX];
+
+	Graph()
 	{
-		for (int j = 0; j < vertices; j++)
+		for (int i = 0; i < MAX; i++)
 		{
-			cout << adj_mat[i][j] << " ";
+			data[i] = new Node(i, 0);
 		}
-		cout << "\n";
-	}
-}
-
-void displayPrim(int selected_vertex[], int res, Graph graph)
-{
-	cout << "\nMST:";
-	int verts = graph.vertices;
-	for (int i = 1; i < verts; i++)
-	{
-		cout << "\nEdge added: " << selected_vertex[i] << " --> " << i << " weight: " << graph.adj_mat[selected_vertex[i]][i];
 	}
 
-	cout << "\n\nMinimum cost: " << res;
-}
-
-void prim(Graph graph)
-{
-	int selected_vertex[MAX];
-	int verts = graph.vertices;
-	int key[verts], res = 0;
-	for (int i = 0; i < verts; i++)
+	void display(int cities_no)
 	{
-		key[i] = INF;
-	}
-	key[0] = 0;
-	bool mSet[verts] = {false};
-
-	for (int count = 0; count < verts; count++)
-	{
-		int u = -1;
-		for (int i = 0; i < verts; i++) // find min value from key and set it as u
+		for (int i = 0; i < cities_no; i++)
 		{
-			if (!mSet[i] && (u == -1 || key[i] < key[u]))
+			if (data[i]->next == NULL)
 			{
-				u = i;
+				continue;
+			}
+			Node *temp = data[i]->next;
+
+			cout << i << "->";
+
+			while (temp->next != NULL)
+			{
+				cout << "[" << temp->index << "," << temp->cost << "]"
+					 << "->";
+				temp = temp->next;
+			}
+			cout << "[" << temp->index << "," << temp->cost << "]";
+			cout << endl;
+		}
+	}
+
+	// void read()
+	// {
+	//     int n;
+	//     cout << "Enter the number of cities-\n";
+	//     cin >> n;
+
+	//     string cities[n];
+
+	//     for (int i = 0; i < n; i++)
+	//     {
+	//         cout << "Enter the name of the city here-\n";
+	//         cin >> cities[i];
+	//     }
+
+	//     for (int i = 0; i < n; i++)
+	//     {
+	//         for (int j = 0; j < n; j++)
+	//         {
+	//             if (i != j)
+	//             {
+	//                 int choice;
+	//                 cout << "Is there a flight path from city " + cities[i] + " to city " + cities[j] + " 1 for yes 0 for no-\n";
+	//                 cin >> choice;
+
+	//                 if (choice == 1)
+	//                 {
+	//                     int fuel;
+	//                     cout << "Enter the fuel required from " + cities[i] + " to city " + cities[j] + "\n";
+	//                     cin >> fuel;
+
+	//                     Node *x = new Node(j, fuel);
+
+	//                     insert(data[i], x);
+	//                 }
+	//             }
+	//         }
+	//     }
+	// }
+
+	void read()
+	{
+		cout << "Enter no. of cities and flights: ";
+		cin >> vertices >> edges;
+
+		int u, v, weight;
+		for (int i = 0; i < edges; i++)
+		{
+			cout << "\nEnter the starting city, destination city and fuel: ";
+			cin >> u >> v >> weight;
+
+			Node *x = new Node(v, weight);
+			Node *y = new Node(u, weight);
+			insert(data[u], x);
+			insert(data[v], y);
+		}
+
+		cout << "\ndisplaying adjacency list:\n";
+		for (int i = 0; i < vertices; i++)
+		{
+			if (data[i]->next == NULL)
+			{
+				continue;
+			}
+			Node *temp = data[i]->next;
+
+			cout << i << "->";
+
+			while (temp->next != NULL)
+			{
+				cout << "[" << temp->index << "," << temp->cost << "]"
+					 << "->";
+				temp = temp->next;
+			}
+			cout << "[" << temp->index << "," << temp->cost << "]";
+			cout << endl;
+		}
+	}
+
+	// void dfs(vector<bool> &visited, int cities)
+	void DFS()
+	{
+		for (int i = 0; i < vertices; i++)
+		{
+			Node *temp = data[i]->next;
+
+			while (temp != NULL)
+			{
+				if (!visited[temp->index])
+				{
+					visited[temp->index] = true;
+				}
+				temp = temp->next;
+			}
+		}
+	}
+
+	void check_connected()
+	{
+		DFS();
+		bool flag = true;
+		for (int i = 0; i < vertices; i++)
+		{
+			if (!visited[i])
+			{
+				flag = false;
+				break;
 			}
 		}
 
-		mSet[u] = true;
-		res = res + key[u];
-
-		for (int i = 0; i < verts; i++) // find min edge from unvisited vertices and update their key values
+		if (flag)
 		{
-			if ((graph.adj_mat[u][i] != 0) && !mSet[i] && (graph.adj_mat[u][i] < key[i]))
-			{
-				key[i] = graph.adj_mat[u][i];
-				selected_vertex[i] = u;
-			}
+			cout << "\n\nGraph is connected\n";
+		}
+		else
+		{
+			cout << "\n\nGraph is not connected\n";
 		}
 	}
-	displayPrim(selected_vertex, res, graph);
-}
+};
 
 int main()
 {
-	Graph test_graph;
-	test_graph.create_graph();
-	prim(test_graph);
+
+	Graph g;
+	g.read();
+	g.check_connected();
+
+	return 0;
 }

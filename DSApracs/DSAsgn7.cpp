@@ -9,7 +9,7 @@ class Graph
 {
 public:
     int adj_mat[MAX][MAX] = {}; // intialize all values to 0
-    int vertices = MAX, edges;
+    int vertices, edges;
     void create_graph();
     void display();
 };

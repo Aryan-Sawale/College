@@ -14,7 +14,7 @@ public:
     int vertices = MAX, edges;
     void create_graph();
     void display();
-    void DFS(int vertex);
+    void DFS();
     void check_connected();
 };
 
@@ -51,16 +51,26 @@ void Graph::display()
     }
 }
 
-void Graph::DFS(int vertex)
+void Graph::DFS()
 {
-    visited[vertex] = true;
-    for (int j = 0; j < vertices; j++)
+    // visited[vertex] = true;
+    // for (int j = 0; j < vertices; j++)
+    // {
+    //     if (adj_mat[vertex][j] != 0)
+    //     {
+    //         if (!visited[j])
+    //         {
+    //             DFS(j);
+    //         }
+    //     }
+    // }
+    for (int i = 0; i < vertices; i++)
     {
-        if (adj_mat[vertex][j] != 0)
+        for (int j = 0; j < vertices; j++)
         {
-            if (!visited[j])
+            if (adj_mat[i][j] != 0)
             {
-                DFS(j);
+                visited[j] = true;
             }
         }
     }
@@ -80,7 +90,7 @@ void Graph::check_connected()
         }
     }
 
-    DFS(0);
+    DFS();
     bool flag = true;
     for (int i = 0; i < vertices; i++)
     {

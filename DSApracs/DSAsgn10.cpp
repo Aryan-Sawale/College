@@ -96,19 +96,26 @@ struct MaxHeap
 int main()
 {
     int n;
-    cout << "Enter the number of students-\n";
+    cout << "Enter the number of students: ";
     cin >> n;
     MinHeap min_heap(n);
     MaxHeap max_heap(n);
     for (int i = 0; i < n; i++)
     {
         int marks;
-        cout << "Enter the marks of the student-\n";
+        cout << "Enter the marks of the student: ";
         cin >> marks;
         min_heap.insert(marks);
         max_heap.insert(marks);
     }
 
-    cout << "The minimum marks are- " << min_heap.arr[0] << endl;
-    cout << "The maximum marks are- " << max_heap.arr[0] << endl;
+    cout << "\nMax heap: ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << max_heap.arr[i] << " ";
+    }
+    cout << "\n";
+
+    cout << "The minimum marks are: " << min_heap.arr[0] << endl;
+    cout << "The maximum marks are: " << max_heap.arr[0] << endl;
 }
