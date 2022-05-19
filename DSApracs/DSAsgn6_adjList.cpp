@@ -42,68 +42,6 @@ struct Graph
         }
     }
 
-    void display(int cities_no)
-    {
-        for (int i = 0; i < cities_no; i++)
-        {
-            if (data[i]->next == NULL)
-            {
-                continue;
-            }
-            Node *temp = data[i]->next;
-
-            cout << i << "->";
-
-            while (temp->next != NULL)
-            {
-                cout << "[" << temp->index << "," << temp->cost << "]"
-                     << "->";
-                temp = temp->next;
-            }
-            cout << "[" << temp->index << "," << temp->cost << "]";
-            cout << endl;
-        }
-    }
-
-    // void read()
-    // {
-    //     int n;
-    //     cout << "Enter the number of cities-\n";
-    //     cin >> n;
-
-    //     string cities[n];
-
-    //     for (int i = 0; i < n; i++)
-    //     {
-    //         cout << "Enter the name of the city here-\n";
-    //         cin >> cities[i];
-    //     }
-
-    //     for (int i = 0; i < n; i++)
-    //     {
-    //         for (int j = 0; j < n; j++)
-    //         {
-    //             if (i != j)
-    //             {
-    //                 int choice;
-    //                 cout << "Is there a flight path from city " + cities[i] + " to city " + cities[j] + " 1 for yes 0 for no-\n";
-    //                 cin >> choice;
-
-    //                 if (choice == 1)
-    //                 {
-    //                     int fuel;
-    //                     cout << "Enter the fuel required from " + cities[i] + " to city " + cities[j] + "\n";
-    //                     cin >> fuel;
-
-    //                     Node *x = new Node(j, fuel);
-
-    //                     insert(data[i], x);
-    //                 }
-    //             }
-    //         }
-    //     }
-    // }
-
     void read()
     {
         cout << "Enter no. of cities and flights: ";
@@ -143,7 +81,6 @@ struct Graph
         }
     }
 
-    // void dfs(vector<bool> &visited, int cities)
     void DFS()
     {
         for (int i = 0; i < vertices; i++)

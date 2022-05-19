@@ -69,6 +69,16 @@ void find_min(Node *root)
     cout << "Minimum value: " << root->data;
 }
 
+void find_max(Node *root)
+{
+    while (root->right != NULL)
+    {
+        root = root->right;
+    }
+
+    cout << "Maximum value: " << root->data;
+}
+
 bool search_val(Node *root, int key)
 {
     if (root == NULL)

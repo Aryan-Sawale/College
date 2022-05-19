@@ -69,6 +69,11 @@ class hashtable:
         index = hashfunction(key)
         temp = self.table[index]
 
+        if (temp.word == key):
+            print("\n" + key + " has been deleted")
+            self.table[index] = temp.next
+            return
+
         flag = False
         while (temp != None):
             if (temp.next.word == key):
@@ -78,10 +83,9 @@ class hashtable:
         
         if(flag):
             temp.next = temp.next.next
-            print("\n" + word + " has been deleted")
+            print("\n" + key + " has been deleted")
         else:
-            print("\n" + word + " was not found")
-
+            print("\n" + key + " was not found")
         
 table = hashtable()
 

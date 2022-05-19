@@ -110,7 +110,7 @@ class hashtable:
         comparisons = 0 
         while(temp != None):
             comparisons += 1
-            if (comparisons >= SIZE):
+            if (comparisons > SIZE):
                 break
             if (name == temp.name):
                 flag = True
