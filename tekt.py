@@ -110,6 +110,7 @@ class hashtable:
         comparisons = 0 
         while(temp != None):
             comparisons += 1
+            print(temp.name, ": ", comparisons)
             if (comparisons >= SIZE):
                 break
             if (name == temp.name):
