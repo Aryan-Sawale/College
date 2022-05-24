@@ -3,7 +3,6 @@
 using namespace std;
 
 #define MAX 10
-#define INF 9999
 bool visited[MAX] = {};
 
 class Graph

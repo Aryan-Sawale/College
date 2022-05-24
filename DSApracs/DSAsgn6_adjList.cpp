@@ -18,7 +18,7 @@ struct Node
     }
 };
 
-void insert(Node *&head, Node *x)
+void insert(Node *head, Node *x)
 {
     Node *temp = head;
     while (temp->next != NULL)

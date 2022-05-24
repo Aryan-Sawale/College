@@ -41,7 +41,7 @@ void Stack::push(node *new_node)
         cout << "Overflow!\n";
         return;
     }
-    arr[++top] = new_node;
+    arr[++top] = new_node; //++top = increment before processing current statement
 }
 
 void Stack::pop()
