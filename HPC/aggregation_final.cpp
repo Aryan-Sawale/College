@@ -1,78 +1,74 @@
 #include <iostream>
-#include <vector>
 #include <omp.h>
+#include <climits>
 using namespace std;
-
-int parallelMin(vector<int> vec)
+void min_reduction(int arr[], int n)
 {
-  int min_val = vec[0];
-#pragma omp parallel for
-  for (int i = 1; i < vec.size(); i++)
+  int min_value = INT_MAX;
+#pragma omp parallel for reduction(min : min_value)
+  for (int i = 0; i < n; i++)
   {
-    if (vec[i] < min_val)
+    if (arr[i] < min_value)
     {
-      min_val = vec[i];
+      min_value = arr[i];
     }
   }
-  return min_val;
+  cout << "Minimum value: " << min_value << endl;
 }
 
-int parallelMax(vector<int> vec)
+void max_reduction(int arr[], int n)
 {
-  int max_val = vec[0];
-#pragma omp parallel for
-  for (int i = 1; i < vec.size(); i++)
+  int max_value = INT_MIN;
+#pragma omp parallel for reduction(max : max_value)
+  for (int i = 0; i < n; i++)
   {
-    if (vec[i] > max_val)
+    if (arr[i] > max_value)
     {
-      max_val = vec[i];
+      max_value = arr[i];
     }
   }
-  return max_val;
+  cout << "Maximum value: " << max_value << endl;
 }
 
-int parallelSum(vector<int> vec)
+void sum_reduction(int arr[], int n)
 {
   int sum = 0;
-#pragma omp parallel for
-  for (int i = 0; i < vec.size(); i++)
+#pragma omp parallel for reduction(+ : sum)
+  for (int i = 0; i < n; i++)
   {
-    sum += vec[i];
+    sum += arr[i];
   }
-  return sum;
+  cout << "Sum: " << sum << endl;
 }
 
-float parallelAverage(vector<int> vec)
+void average_reduction(int arr[], int n)
 {
-  int sum = parallelSum(vec);
-  float avg = float(sum) / vec.size();
-  return avg;
+  int sum = 0;
+#pragma omp parallel for reduction(+ : sum)
+  for (int i = 0; i < n; i++)
+  {
+    sum += arr[i];
+  }
+  cout << "Average: " << (double)sum / (n - 1) << endl;
 }
 
 int main()
 {
-  int n;
-  cout << "Enter the number of elements: ";
+  int *arr, n;
+  cout << "Enter total no of elements: ";
   cin >> n;
-
-  vector<int> vec(n);
-  cout << "Enter the elements: ";
-  for (int i = 0; i < n; ++i)
+  arr = new int[n];
+  for (int i = 0; i < n; i++)
   {
-    cin >> vec[i];
+    cout << "Element " << i + 1 << ": ";
+    cin >> arr[i];
   }
 
-  int min_val = parallelMin(vec);
-  cout << "Minimum value: " << min_val << endl;
+  //   int arr[] = {5, 2, 9, 1, 7, 6, 8, 3, 4};
+  //   int n = size(arr);
 
-  int max_val = parallelMax(vec);
-  cout << "Maximum value: " << max_val << endl;
-
-  int sum = parallelSum(vec);
-  cout << "Sum of values: " << sum << endl;
-
-  float avg = parallelAverage(vec);
-  cout << "Average of values: " << avg << endl;
-
-  return 0;
+  min_reduction(arr, n);
+  max_reduction(arr, n);
+  sum_reduction(arr, n);
+  average_reduction(arr, n);
 }
